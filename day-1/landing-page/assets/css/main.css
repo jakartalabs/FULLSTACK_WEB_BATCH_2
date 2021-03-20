@@ -1,0 +1,256 @@
+/* Apply to all four sides */
+/* margin: 1em; */
+/* margin: -3px; */
+
+/* vertical | horizontal */
+/* margin: 5% auto; */
+
+/* top | horizontal | bottom */
+/* margin: 1em auto 2em; */
+
+/* top | right | bottom | left */
+/* margin: 2px 1em 0 auto; */
+
+/* Global values */
+/* margin: inherit;
+margin: initial;
+margin: unset; */
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,500;1,700&display=swap");
+:root {
+  --danger-color: #F53838;
+  --stroke:#9398a8;
+}
+
+body { 
+  background: #F6F6F6;
+  margin: 0;
+  font-family: 'Rubik';
+}
+
+.container {
+  width: 1440px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 6em 4em;
+}
+
+.navbar {
+  /* background: white; */
+  padding: 1em;
+  margin-top: 2em;
+  /* position: fixed; */
+}
+
+.navbar .logo {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  font: size 1.2em;
+}
+
+.navbar .container {
+  display: flex;
+  place-content: space-between;
+}
+
+.navbar nav {
+  display: flex;
+  flex-direction: row;
+  background:none;
+  position: unset;
+  height: auto;
+  width: 100%;
+  padding: 0;
+  margin-left: 15em;
+  margin-top: 2px;
+}
+
+.navbar nav ul {
+  display: flex;
+}
+
+.navbar nav ul.left-nav {
+  margin: 0;
+  width: 60%;
+}
+
+.navbar nav ul.left-nav li {
+  padding: 0 1.5em;
+}
+
+ul.left-nav li a {
+  color: black;
+  text-decoration: none;
+}
+
+ul.left-nav li a:hover {
+  font-weight: bold;
+}
+
+.navbar nav ul.right-nav {
+ width: 30%;
+ justify-content: flex-end; 
+}
+
+.navbar nav ul.right-nav li {
+  padding: 0 1.5em;
+}
+
+ul.right-nav li:first-child a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hero .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.hero-cta h1 {
+  width:10em;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 70px;
+}
+
+.hero-cta p {
+  width: 30em;
+}
+
+p {
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+h1{
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 50px;
+  color: #0B132A;
+}
+
+
+.btn {
+  text-decoration: none;
+  padding: 1em 3em;
+  font-family: Rubik;
+  font-style: normal;
+  font-size: 16px;
+  line-height:25px;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  border-radius:  10px;
+  color: white;
+}
+
+.btn-outline-danger {
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
+.statistic-content {
+  background: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  /* align-item: center; */
+  justify-content: space-between;
+}
+
+.statistic-content .card {
+  align-items: center;
+  padding: 2.5em 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 30%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+
+.statistic-content .card div{
+   display: flex;
+   flex-direction: column;
+}
+
+.statistic-content .card div>span {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.statistic-content .card img{
+   margin-right: 1em;
+}
+
+.statistic-content div:first-of-type + div {
+  border-left: 1px solid var(--stroke);
+  border-right: 1px solid var(--stroke);
+}
+
+.feature .container {
+  display: flex;
+  flex-direction:row;
+  /* justify-content:space-between; */
+}
+
+.feature .container img {
+  margin-right: 16em;
+}
+
+.feature-content h1 {
+  width: 14.5em;
+}
+
+.feature-content p {
+  width: 30em;
+}
+
+ul.feature-list li {
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 30px;
+  color: #4F5665;
+  margin-bottom: 1em;
+  margin-left: 2em;
+  position: relative;
+} 
+
+ul.feature-list li:before {
+  content: '';
+  left: -2em;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-image: url("../img/bullet.png");
+  background-size:contain;
+  margin-right: .5em;
+}
+
+
