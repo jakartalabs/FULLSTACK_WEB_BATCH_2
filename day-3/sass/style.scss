@@ -1,0 +1,93 @@
+// line comments 
+/* Block Comments*/
+
+// Variable in scss
+$red: rgb(228, 56, 56);
+$blue: blue;
+
+body {
+  color: $red;
+}
+
+// nesting in sacss
+ul.left-nav{
+  li{
+    a{
+      color: $blue;
+      &:hover {
+        font-weight: bold;
+        color: $red;
+      }
+      &:active {
+        color: $blue;
+      }
+    }
+  }
+}
+
+// @extend
+
+.navbar {
+  color: white;
+}
+
+.nav {
+  @extend .navbar;
+  font-size: 50px;
+}
+
+// @mixins
+
+@mixin fontSize($params: 10px){
+  font-size: $params;
+}
+
+.navbar{
+  @include fontSize();
+}
+
+// color function
+$a: red;
+$b: blue;
+
+
+.nav{
+  @include fontSize();
+  color: mix($a, $b, 10%)
+  to-lower-case($string: "hello semua");
+}
+
+//  loop
+@for $x from 1 through 10 {
+  .font-size-#{$x} {
+    font-size: 0px+ $x;
+  }
+}
+
+@for $x from 1 through 5 {
+  h#{$x} {
+    font-size: 0px+ $x;
+  }
+}
+
+
+@for $i from 0 through 30 {
+  .m#{$i} {
+    margin: 0px + $i;
+  }
+  .mt#{$i} {
+    margin-top: 0px + $i;
+  }
+  .mb#{$i} {
+    margin-bottom: 0px + $i;
+  }
+  .ml#{$i} {
+    margin-left: 0px + $i;
+  }
+  .mr#{$i} {
+    margin-right: 0px + $i;
+  }
+}
+
+//import
+@import "button.scss"

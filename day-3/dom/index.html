@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom</title>
+  <style>
+    .drag{
+      cursor: move;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="list">
+    <div class="drag">A</div>
+    <div class="drag">B</div>
+    <div class="drag">C</div>
+    <div class="drag">D</div>
+    <div class="drag">E</div>
+  </div>
+
+  <textarea id="pesan" maxlength="10"></textarea>
+  <div id="counter"></div>
+
+  <input type="file" id="fileInput">
+  <img id="preview">
+
+  <div id="list-text">
+    <input type="text"> 
+  </div>
+  <button id="add-input">Add</button>
+  <script src="index.js"></script>
+</body>
+</html>
