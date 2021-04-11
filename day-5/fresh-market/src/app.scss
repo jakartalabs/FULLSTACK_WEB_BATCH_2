@@ -1,115 +1,115 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-$green-100: #6A983C;
-$green-75: #46760A;
-$green-50: #92C064;
-$green-25: #C8DEB3;
-$green-10: #F4F8EC;
+// $green-100: #6A983C;
+// $green-75: #46760A;
+// $green-50: #92C064;
+// $green-25: #C8DEB3;
+// $green-10: #F4F8EC;
 
 
 body{
   font-family: Poppins;
 }
 
-.register-left{
-  // border: 1px solid $green-100;
-  width: 400px;
-  height: 400px;
-}
+// .register-left{
+//   // border: 1px solid $green-100;
+//   width: 400px;
+//   height: 400px;
+// }
 
-.align-center{
-  margin: 0 auto;
-}
+// .align-center{
+//   margin: 0 auto;
+// }
 
-.register-right{
-  border: 1px solid $green-25;
-  width: 400px;
-  height: 400px;
-  display: flex;;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  background: #FFFFFF;
-  box-shadow: 0px 2px 32px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-}
+// .register-right{
+//   border: 1px solid $green-25;
+//   width: 400px;
+//   height: 400px;
+//   display: flex;;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 30px;
+//   background: #FFFFFF;
+//   box-shadow: 0px 2px 32px rgba(0, 0, 0, 0.15);
+//   border-radius: 12px;
+// }
 
-.register-wrap{
-  display: flex;
-  // align-items:center;
-  flex-direction: row;
-  justify-content: center;
-}
+// .register-wrap{
+//   display: flex;
+//   // align-items:center;
+//   flex-direction: row;
+//   justify-content: center;
+// }
 
-.login-wrap{
-  display: flex;
-  // align-items:center;
-  flex-direction: row;
-  justify-content: center;
-}
+// .login-wrap{
+//   display: flex;
+//   // align-items:center;
+//   flex-direction: row;
+//   justify-content: center;
+// }
 
-.login-box{
-  border: 1px solid $green-25;
-  width: 400px;
-  height: 400px;
-  display: flex;;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  background: #FFFFFF;
-  box-shadow: 0px 2px 32px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-}
-
-
-.register-logo{
-  display: flex;
-  // align-items:center;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 33px;
-}
+// .login-box{
+//   border: 1px solid $green-25;
+//   width: 400px;
+//   height: 400px;
+//   display: flex;;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 30px;
+//   background: #FFFFFF;
+//   box-shadow: 0px 2px 32px rgba(0, 0, 0, 0.15);
+//   border-radius: 12px;
+// }
 
 
-h1{
-  font-size: 22px;
-}
+// .register-logo{
+//   display: flex;
+//   // align-items:center;
+//   flex-direction: row;
+//   justify-content: center;
+//   margin-top: 20px;
+//   margin-bottom: 20px;
+//   font-family: Poppins;
+//   font-style: normal;
+//   font-weight: 600;
+//   font-size: 22px;
+//   line-height: 33px;
+// }
 
-h2{
-  font-size: 20px;
-}
 
-h3{
-  font-size: 18px;
-}
+// h1{
+//   font-size: 22px;
+// }
 
-input[type=text]{
-  height: 42px;
-  width: 250px;
-  background: #F9F9F9;
-  border: 1px solid #D1D1D1;
-  box-sizing: border-box;
-  border-radius: 12px;
-}
+// h2{
+//   font-size: 20px;
+// }
 
-.btn{
-  width: 148px;
-  height: 46px;
-  background: #6A983C;
-  /* C2/B */
-  border: 2px solid #46760A;
-  box-sizing: border-box;
-  border-radius: 12px;
-  color: #fff;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  line-height: 22px;
-}
+// h3{
+//   font-size: 18px;
+// }
+
+// input[type=text]{
+//   height: 42px;
+//   width: 250px;
+//   background: #F9F9F9;
+//   border: 1px solid #D1D1D1;
+//   box-sizing: border-box;
+//   border-radius: 12px;
+// }
+
+// .btn{
+//   width: 148px;
+//   height: 46px;
+//   background: #6A983C;
+//   /* C2/B */
+//   border: 2px solid #46760A;
+//   box-sizing: border-box;
+//   border-radius: 12px;
+//   color: #fff;
+//   font-family: Poppins;
+//   font-style: normal;
+//   font-weight: bold;
+//   font-size: 15px;
+//   line-height: 22px;
+// }
