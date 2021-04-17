@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: db-fress-market
+    environment:
+      MYSQL_ROOT_PASSWORD: fress_market
+      MYSQL_DATABASE: fress_market
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: fress_market
+    ports:
+      - "6032:3306"
+    volumes:
+      - ./data/db:/var/lib/mysql

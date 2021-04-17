@@ -1,0 +1,22 @@
+1. Mysql Seerver
+
+   Sql
+   Setup Mysql server 5.7 as Container stateful with docker
+
+   a. Docker experimenta
+
+      Pull images from docker
+      - docker pull <image_name> ; docker pull busybox
+
+      Run Simple Docker 
+      - docker run busybox
+
+      List of image in local
+      - docker images 
+
+      List of container running
+      - docker ps
+      - docker ps -a (is exited)
+
+      To deep container
+      - docker run -it busybox sh | bash
