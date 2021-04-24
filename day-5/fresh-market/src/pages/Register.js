@@ -2,7 +2,23 @@ import React, { Component } from 'react';
 import RegisterLogoImg from '../assets/img/images.jpeg';
 import {register} from '../api/user';
 
+import PropTypes from "prop-types";
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  // withRouter
+  // useHistory
+} from "react-router-dom";
+
+import { withRouter } from "react-router";
+
 export class Register extends Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
   constructor(props){
     super(props);
     // this.state = {userLogin : ''};
@@ -24,8 +40,33 @@ export class Register extends Component {
     const result= await register(data);
     console.log(result);
   }
+ 
+
+  
 
   render() {
+    // const { history } = this.props;
+    function getHistory() {
+
+      const windowQuery = new URLSearchParams(window.location.search);
+      // let history = useHistory();
+      // history.push({
+      //   pathname: window.location.pathname,
+      //   search: `?${windowQuery.toString()}`
+      // });
+    }
+    function ListItemLink({ to, ...rest }) {
+      return (
+        <Route
+          path={to}
+          children={({ match }) => (
+            <li className={match ? "active" : ""}>
+              <Link to={to} {...rest} >{rest.name}</Link>
+            </li>
+          )}
+        />
+      );
+    }
     return (
       <div className="container">
         <div className="row">
@@ -47,6 +88,13 @@ export class Register extends Component {
                 <br/>
                 <input type="submit" className="btn" value="Submit" name="Register"/>
               </form>
+                <Router>
+                  <ul>
+                    <ListItemLink to="/somewhere" name="somewhere"/>
+                    <ListItemLink to="/somewhere-else" name="test" />
+                  </ul>
+                </Router>
+              <button onClick={getHistory()}>History</button>
             </div>
           </div>
         </div>
@@ -55,4 +103,4 @@ export class Register extends Component {
   }
 }
 
-export default Register
+export default withRouter(Register);

@@ -6,16 +6,24 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Home from './pages/Home';
+// import Home from './pages/TestRouter';
 import reportWebVitals from './reportWebVitals';
+
+const userData ={
+  login: false,
+}
+// product-> ?category &  bestSeller=true & rating
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
     <Router>
       <Switch>
-        <Route exact path="/" component={Home} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Home} />
+        {/* <Route exact path="/product" component={Product} /> */}
+        {/* <Route exact path="/product-detail/:id" component={ProductDetail} /> */}
+        {/* <Route exact path="/cart" component={ProductDetail} /> */}
       </Switch>
     </Router>
   </React.StrictMode>,

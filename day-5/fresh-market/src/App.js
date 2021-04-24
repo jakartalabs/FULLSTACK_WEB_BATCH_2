@@ -1,10 +1,10 @@
 import logo from './logo.svg';
-import Register from '../src/pages/Register';
+import TestRouter from '../src/pages/TestRouter';
 
 function App() {
   return (
     <div className="App">
-      <Register/>
+      <TestRouter/>
     </div>
   );
 }
