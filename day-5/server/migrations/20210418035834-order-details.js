@@ -2,27 +2,30 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('user', {
+    return queryInterface.createTable('order_details', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.BIGINT(11)
+      },
+      orders_id: {
+        type: Sequelize.BIGINT(11)
+      },
+      product_id: {
+        type: Sequelize.BIGINT(11)
+      },
+      price: {
+        type: Sequelize.DECIMAL(10,2)
+      },
+      discount: {
+        type: Sequelize.DECIMAL(10, 2)
+      },
+      quantity: {
         type: Sequelize.INTEGER
       },
-      uuid_user: {
-        type: Sequelize.STRING(36)
-      },
-      name: {
-        type: Sequelize.STRING(255)
-      },
-      email: {
-        type: Sequelize.STRING(100)
-      },
-      password: {
-        type: Sequelize.STRING(255)
-      },
-      status: {
-        type: Sequelize.TINYINT(1)
+      quantity_type: {
+        type: Sequelize.STRING(25)
       },
       created_at: {
         type: Sequelize.DATE,
@@ -40,6 +43,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('user');
+    await queryInterface.dropTable('order_details');
   }
 };
