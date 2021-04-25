@@ -7,6 +7,7 @@ import {
   BrowserRouter as Router,
   Link,
   Route,
+  Redirect
   // withRouter
   // useHistory
 } from "react-router-dom";
@@ -47,7 +48,6 @@ export class Register extends Component {
   render() {
     // const { history } = this.props;
     function getHistory() {
-
       const windowQuery = new URLSearchParams(window.location.search);
       // let history = useHistory();
       // history.push({
@@ -90,7 +90,7 @@ export class Register extends Component {
               </form>
                 <Router>
                   <ul>
-                    <ListItemLink to="/somewhere" name="somewhere"/>
+                    <ListItemLink to="/" name="somewhere"/>
                     <ListItemLink to="/somewhere-else" name="test" />
                   </ul>
                 </Router>

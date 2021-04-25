@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from "../components/Button"
+
 export class Home extends Component {
   render() {
     return (
