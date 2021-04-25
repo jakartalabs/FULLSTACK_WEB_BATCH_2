@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RegisterLogoImg from '../assets/img/images.jpeg';
 import {register} from '../api/user';
+import { connect } from 'react-redux';
 
 import PropTypes from "prop-types";
 import {
@@ -103,4 +104,8 @@ export class Register extends Component {
   }
 }
 
-export default withRouter(Register);
+// export default withRouter(Register);
+const mapStateToProps = state => {
+  console.log('state', state);
+}
+export default connect(mapStateToProps)(Register)
