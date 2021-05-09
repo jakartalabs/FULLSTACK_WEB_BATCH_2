@@ -5,6 +5,27 @@ const initialState = {
   byIds: {}
 };
 
+// const initialState = {
+//   listOfCart: [
+//     {
+//       itemID:1,
+//       name:'SSD',
+//       qty: 10,
+//       price: 10000
+//     },
+//     {
+//       itemID: 2,
+//       name: 'SSD',
+//       qty: 10,
+//       price: 10000
+//     }
+//   ],
+//   cartSummary: {
+//     totalPrice: 20000,
+//     jumlahBarang: 20
+//   }
+// };
+
 export default function(state = initialState, action) {
   console.log(action);
   switch (action.type) {

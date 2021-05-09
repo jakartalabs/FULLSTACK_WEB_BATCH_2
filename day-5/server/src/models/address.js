@@ -7,7 +7,7 @@ class Address extends Model {
 
   }
   static get() {
-   const product = this.findByPk(1, {raw: true, transaction: t}); 
+    const product = this.findByPk(1, {raw: true, transaction: t}); 
     this.create(data, {ransaction: t })
   }
 };
