@@ -1,7 +1,8 @@
 import React from 'react'
 import Button from "./Button";
 
-function Card({title, description, price, discountPrice, btnBuy='enable'}) {
+function Card({data}) {
+  // title, description, price, discountPrice, btnBuy='enable'
   return (
     <div className="w-card-width rounded-md border border-gray-300 p-4">
       {/* img */}
@@ -9,13 +10,13 @@ function Card({title, description, price, discountPrice, btnBuy='enable'}) {
 
       </div>
       <div className="mt-4">
-        <h2 className="font-semibold text-xl">Product title</h2>
-        <p className="text-sm mt-2">Space for a small product description </p>
+        <h2 className="font-semibold text-xl">{data.title}</h2>
+        <p className="text-sm mt-2">{data.description}</p>
       </div>
       <div className="flex flex-row justify-between mt-4">
         <div className="flex flex-col">
-          <div>Rp 1000</div>
-          <div>Discount</div>
+          <div className="font-bold">{data.price}</div>
+          <div className="text-sm">{data.discountPrice}</div>
         </div>
         <div className="self-center">
           <Button

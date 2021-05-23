@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Button({ children, onClick, btnType = 'default', size = 'md', arrow }) {
+function Button({ children, onClick, btnType, size = 'md', arrow }) {
   let btnStyle;
   switch (btnType) {
     case 'outline': {
@@ -34,7 +34,7 @@ function Button({ children, onClick, btnType = 'default', size = 'md', arrow }) 
         btnStyle = `bg-gray-100`;
       }
       if (size === 'lg') {
-        btnStyle = `bg-green-500`;
+        btnStyle = `bg-gray-100`;
       }
       break;
   }

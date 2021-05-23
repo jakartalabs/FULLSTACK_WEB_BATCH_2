@@ -1,17 +1,22 @@
 import React from 'react'
+import Logo from '../assets/img/Freshnesecom.png';
 
 function NavSearch() {
   return (
     <div className="flex flex-row">
-      <div className="w-1/4">Logo</div>
-      <div className="w-1/2 flex justify-center bg-gray-200">
+      <div className="w-1/4 flex flex-row">
+        <img src={Logo} className="self-center" style={{ width: "200px" }} />
+      </div>
+      <div className="w-1/2 flex justify-center">
         <div className="mt-1 relative rounded-md shadow-sm w-1/2">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <span className="text-gray-100 bg-gray-500 py-2 rounded-l-full px-4">
-              All Categories
-            </span>
+          <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+              {/* All Categories */}
+            <select className="rounded-l-md p-2" name="categories">
+              <option value="All Categories">All Categories</option>
+              <option value="All Categories">All Categories2</option>
+            </select>
           </div>
-          <input type="text" name="price" id="price" className="ml-36 py-2 outline-none focus:ring-indigo-500 focus:border-indigo-500 block w-3/4 pl-6 pr-4 text-sm border border-gray-500 rounded rounded-r-full" placeholder="0.00"/>
+          <input type="text" name="price" id="price" className="ml-36 py-2 outline-none focus:ring-indigo-500 focus:border-indigo-500 block w-3/4 pl-6 pr-4 text-sm border border-gray-500 rounded rounded-r-md" placeholder=""/>
           <div className="absolute inset-y-0 right-0 flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -19,7 +24,16 @@ function NavSearch() {
           </div>
         </div>
       </div>
-      <div className="w-1/4">Icon</div>
+      <div className="w-1/4 flex flex-row">
+        <div className="flex flex-row self-center w-20 ml-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" className="ml-6 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+      </div>
     </div>
   )
 }

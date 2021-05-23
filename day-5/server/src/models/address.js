@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const DBCONNECTION = require('../configs/db');
-const t = await sequelize.transaction();
+// const t = await sequelize.transaction();
 
 class Address extends Model {
   static associate(models){

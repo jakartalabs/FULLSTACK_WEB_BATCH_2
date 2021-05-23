@@ -39,6 +39,7 @@ module.exports = {
       discount_percentage: {
         type: Sequelize.INTEGER(2)
       },
+      // is Ads
       rating: {
         type: Sequelize.INTEGER(3)
       },
