@@ -2,11 +2,11 @@ const Sequelize = require('sequelize');
 
 const DBCONNECTION = new Sequelize({
   username: "db_user",
-  password: "fress_market",
-  database: "fress_market",
+  password: "fresh_market",
+  database: "fresh_market",
   host: "localhost",
   dialect: "mysql",
-  port: 6032
+  port: 6034
 });
 
 module.exports = DBCONNECTION;

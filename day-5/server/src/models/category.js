@@ -5,6 +5,16 @@ class Category extends Model {
   static associate(models) {
 
   }
+
+  static getAll() {
+    return Category.findAll({
+      raw: true
+    });
+  }
+
+  static _create(data) {
+    return Category.create(data);
+  }
 };
 
 Category.init({
@@ -33,8 +43,9 @@ Category.init({
   }
 }, {
   sequelize: DBCONNECTION,
-  timestamps: false,
+  timestamps: true,
   underscored: true,
+  paranoid: true,
   modelName: 'Category',
   tableName: 'category'
 });
