@@ -3,13 +3,13 @@ version: '3'
 services:
   db:
     image: mysql:5.7
-    container_name: db-fress-market
+    container_name: db-fresh-market
     environment:
-      MYSQL_ROOT_PASSWORD: fress_market
-      MYSQL_DATABASE: fress_market
+      MYSQL_ROOT_PASSWORD: fresh_market
+      MYSQL_DATABASE: fresh_market
       MYSQL_USER: db_user
-      MYSQL_PASSWORD: fress_market
+      MYSQL_PASSWORD: fresh_market
     ports:
-      - "6032:3306"
+      - "6034:3306"
     volumes:
       - ./data/db:/var/lib/mysql

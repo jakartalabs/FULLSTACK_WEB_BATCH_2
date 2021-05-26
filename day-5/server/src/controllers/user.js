@@ -1,14 +1,16 @@
+const logger = require('../helpers/logging');
 
 
 
 module.exports = {
   getUser: (req, res, next) =>{
     try {
+      logger.info('get data');
       const data = {
         name: 'julio',
         job: 'fullstack'
       }
-
+     
       res.status(200).json(data);
     } catch (error) {
       next(error);

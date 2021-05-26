@@ -2,6 +2,7 @@ require('dotenv').config();
 const http = require('http');
 const app = require('./app');
 const { Op } = require("sequelize");
+const logger = require('./helpers/logging');
 
 // const DBCONNECTION = require('./configs/db');
 const Address = require('./models/address')
@@ -18,6 +19,6 @@ server.on('listening', async()=>{
   } catch (error) {
     console.log(error)
   }
-  console.log('Server ready')
+  logger.info('Server ready');
 });
 

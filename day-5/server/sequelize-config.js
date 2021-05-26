@@ -3,10 +3,10 @@ const nodeEnv = process.env.NODE_ENV;
 module.exports = {
   [nodeEnv]: {
     username: "db_user",
-    password: "fress_market",
-    database: "fress_market",
+    password: "fresh_market",
+    database: "fresh_market",
     host: "localhost",
     dialect: "mysql",
-    port: 6032
+    port: 6034
   }
 }

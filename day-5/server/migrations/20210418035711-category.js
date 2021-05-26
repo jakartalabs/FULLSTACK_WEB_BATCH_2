@@ -15,6 +15,9 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      status: {
+        type: Sequelize.TINYINT(1)
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: true
