@@ -6,8 +6,8 @@ const categoryCtrl = require('../controllers/category');
 const router = express();
 
 // Users
-// router.route('/user')
-//   .get(userCtrl.getUser)
+router.route('/user')
+  .get(userCtrl.getUser)
 //   .post(userCtrl.createUser);
 
 // Category
