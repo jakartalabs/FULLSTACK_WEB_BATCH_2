@@ -1,6 +1,7 @@
 const express = require('express');
 const userCtrl = require('../controllers/user');
 const categoryCtrl = require('../controllers/category');
+const productCtrl = require('../controllers/product');
 
 // v1
 const router = express();
@@ -8,7 +9,6 @@ const router = express();
 // Users
 router.route('/user')
   .get(userCtrl.getUser)
-//   .post(userCtrl.createUser);
 
 // Category
 router.route('/category')
@@ -19,6 +19,16 @@ router.route('/category/:name')
 router.route('/category/:id')
   .put(categoryCtrl.update)
   .delete(categoryCtrl.delete);
+
+
+// Product
+router.route('/product')
+  .get(productCtrl.getAll)
+  .post(productCtrl.create);
+router.route('/product/:uuid')
+  .get(productCtrl.getByUuid)
+  .put(productCtrl.update)
+  .delete(productCtrl.delete);
 
 module.exports = router;
 

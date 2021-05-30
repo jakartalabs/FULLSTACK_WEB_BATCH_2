@@ -12,12 +12,18 @@ const generateJwt = async (data) => {
 }
 
 const jwtVerify = async (token, secret) => {
-  const jwtData = await jsonwebtoken.verify(token, secret);
-  if (jwtData) {
-    console.log(jwtData)
-    return jwtData;
+  try {
+    const jwtData = await jsonwebtoken.verify(token, secret, (err, encoded) => {
+      if (err) throw err;
+      return encoded;
+    });
+    if (jwtData) {
+      return jwtData;
+    }
+  } catch (error) { 
+    console.log(error);
+    return false;
   }
-  return false;
 }
 
 const authorize = async (req, res, rbac, next) =>{
@@ -25,20 +31,19 @@ const authorize = async (req, res, rbac, next) =>{
   const token = headers.slice(7);
   const jwtValid = await jwtVerify(token, JWT_SECRET);
   
-  const user = await Users.findOne({
-    where: {
-      email: jwtValid.email,
-      token
-    },
-    raw: true,
-    plain: true
-  })
-
-  if (jwtValid && user){
+  if (jwtValid){
+    await Users.findOne({
+      where: {
+        email: jwtValid.email,
+        token
+      },
+      raw: true,
+      plain: true
+    })
     const isRole = await validRole(rbac, jwtValid.role);
     if(isRole){
       req.user = jwtValid;
-      next();
+      return next();
     }
     return res.status(400).json({ message: 'Role is not valid' });
   }

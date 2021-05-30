@@ -5,7 +5,7 @@ const { Op } = require("sequelize");
 const logger = require('./helpers/logging');
 
 // const DBCONNECTION = require('./configs/db');
-const Address = require('./models/address')
+const Address = require('./models/address');
 
 const server = http.createServer(app);
 
@@ -15,6 +15,7 @@ server.listen(PORT);
 server.on('err', (err)=>{ console.log(err) });
 server.on('listening', async()=>{
   try {
+    
     await rbac.init();
     // await DBCONNECTION.authenticate();
   } catch (error) {

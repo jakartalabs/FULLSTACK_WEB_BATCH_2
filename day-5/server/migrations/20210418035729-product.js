@@ -12,6 +12,9 @@ module.exports = {
       product_uuid: {
         type: Sequelize.UUID
       },
+      name: {
+        type: Sequelize.TEXT
+      },
       sku: {
         type: Sequelize.STRING(36)
       },

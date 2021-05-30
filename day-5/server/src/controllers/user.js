@@ -27,7 +27,6 @@ module.exports = {
   },
   logout: async (req, res, next) => { 
     try {
-      console.log(req.user)
       await Users.update({
         token: null,
       }, {
@@ -35,7 +34,6 @@ module.exports = {
           email: req.user.email
         }
       })
-
       res.send('ok');
     } catch (error) {
       next(error);

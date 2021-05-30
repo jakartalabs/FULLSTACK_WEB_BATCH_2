@@ -1,6 +1,5 @@
 const Category = require('../models/category');
 const { Op } = require("sequelize");
-const e = require('express');
 
 module.exports = {
   getAll: async (req, res, next) =>{
