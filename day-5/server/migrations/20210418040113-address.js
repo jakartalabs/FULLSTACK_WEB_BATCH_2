@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.BIGINT(11)
       },
-      address: {
-        type: Sequelize.TEXT
-      },
       user_id: {
         type: Sequelize.BIGINT(11)
       },

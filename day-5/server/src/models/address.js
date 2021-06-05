@@ -6,9 +6,18 @@ class Address extends Model {
   static associate(models){
 
   }
-  static get() {
-    const product = this.findByPk(1, {raw: true, transaction: t}); 
-    this.create(data, {ransaction: t })
+
+  static getAll(userId) {
+    return Address.findAll({
+      where: {
+        userId
+      },
+      raw: true
+    });
+  }
+
+  static _create(data) {
+    return Address.create(data);
   }
 };
 
@@ -17,9 +26,6 @@ Address.init({
     primaryKey: true,
     autoIncrement: true,
     type: DataTypes.BIGINT
-  },
-  address: {
-    type: DataTypes.TEXT
   },
   userId: {
     type: DataTypes.BIGINT
@@ -35,6 +41,12 @@ Address.init({
   },
   postalCode: {
     type: DataTypes.STRING
+  },
+  detailAddress: {
+    type: DataTypes.TEXT
+  },
+  isSelected: {
+    type: DataTypes.BOOLEAN
   }
 },{
   sequelize: DBCONNECTION,

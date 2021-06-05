@@ -2,7 +2,9 @@ const express = require('express');
 const userCtrl = require('../controllers/user');
 const categoryCtrl = require('../controllers/category');
 const productCtrl = require('../controllers/product');
-const shippingCategory = require('../controllers/shipping-category');
+const shippingCategoryCtrl = require('../controllers/shipping-category');
+const paymentMethodCtrl = require('../controllers/payment-method');
+const addressCtrl = require('../controllers/address');
 
 // v1
 const router = express();
@@ -31,12 +33,28 @@ router.route('/product/:uuid')
   .put(productCtrl.update)
   .delete(productCtrl.delete);
 
+//Shipping Category  
 router.route('/shipping-category')
-  .get(shippingCategory.getAll)
-  .post(shippingCategory.create);
+  .get(shippingCategoryCtrl.getAll)
+  .post(shippingCategoryCtrl.create);
 router.route('/shipping-category/:id')
-  .get(shippingCategory.getById)
-  .put(shippingCategory.update);
+  .get(shippingCategoryCtrl.getById)
+  .put(shippingCategoryCtrl.update);
+
+//Payment Method
+router.route('/payment-method')
+  .get(paymentMethodCtrl.getAll)
+  .post(paymentMethodCtrl.create);
+router.route('/payment-method/:id')
+  .get(paymentMethodCtrl.getById)
+  .put(paymentMethodCtrl.update);
+
+router.route('/address')
+  .get(addressCtrl.getAll)
+  .post(addressCtrl.create);
+router.route('/address/:id')
+  .get(addressCtrl.getById)
+  .put(addressCtrl.update);
 
 module.exports = router;
 

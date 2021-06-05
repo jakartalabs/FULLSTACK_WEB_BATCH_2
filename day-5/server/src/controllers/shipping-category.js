@@ -16,7 +16,7 @@ module.exports = {
   getById: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const category = await ShippingCategory.findOne(
+      const shippingCategory = await ShippingCategory.findOne(
         {
           where: {
             id
@@ -24,8 +24,8 @@ module.exports = {
         }
       )
 
-      if (category) {
-        return res.status(200).json(category);
+      if (shippingCategory) {
+        return res.status(200).json(shippingCategory);
       }
       return res.status(400).json({ message: 'Shipping category not foun' });
     } catch (error) {
