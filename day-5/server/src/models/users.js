@@ -2,17 +2,16 @@ const { Model, DataTypes } = require('sequelize');
 const DBCONNECTION = require('../configs/db');
 // const t = await sequelize.transaction();
 
-class Address extends Model {
+class Users extends Model {
   static associate(models) {
 
   }
-  static get() {
-    const product = this.findByPk(1, { raw: true, transaction: t });
-    this.create(data, { ransaction: t })
+  static _create(data) {
+    return Users.create(data);
   }
 };
 
-Address.init({
+Users.init({
   id: {
     primaryKey: true,
     autoIncrement: true,
@@ -27,6 +26,9 @@ Address.init({
   },
   email: {
     type: DataTypes.STRING
+  },
+  phone: {
+    type: DataTypes.STRING,
   },
   password: {
     type: DataTypes.STRING
@@ -55,4 +57,4 @@ Address.init({
   modelName: 'Users',
   tableName: 'users'
 });
-module.exports = Address;
+module.exports = Users;

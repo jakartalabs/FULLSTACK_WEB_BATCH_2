@@ -9,6 +9,7 @@ const router = express();
 // Users
 router.route('/user')
   .get(userCtrl.getUser)
+  .post(userCtrl.createUser);
 
 // Category
 router.route('/category')

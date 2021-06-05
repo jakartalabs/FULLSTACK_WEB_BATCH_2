@@ -2,7 +2,8 @@ require('dotenv').config();
 const jsonwebtoken = require('jsonwebtoken');
 const validRole = require('./valid-role');
 const Users = require('../models/users');
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const { JWT_SECRET } = process.env;
 
@@ -50,7 +51,21 @@ const authorize = async (req, res, rbac, next) =>{
   return res.status(404).json({message: 'Auth not Invalid'});
 }
 
+const hashPassword = async (myPlaintextPassword) =>{
+  return new Promise((resolve, reject) => bcrypt.hash(myPlaintextPassword, saltRounds, function (err, hash) {
+    console.log(hash);
+    if (err) reject(err);
+    resolve(hash);
+  }))
+}
+
+const checkHashPassword = async (myPlaintextPassword, hash) => {
+  return bcrypt.compareSync(myPlaintextPassword, hash); // true
+}
+
 module.exports = {
   generateJwt,
-  authorize
+  authorize,
+  hashPassword,
+  checkHashPassword
 }
