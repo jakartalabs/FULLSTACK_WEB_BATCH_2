@@ -8,6 +8,9 @@ class ShippingCategory extends Model {
 
   static getAll() {
     return ShippingCategory.findAll({
+      where: {
+        status: 1
+      },
       raw: true
     });
   }
@@ -26,15 +29,13 @@ ShippingCategory.init({
   name: {
     type: DataTypes.STRING
   },
-  description: {
-    type: DataTypes.TEXT
-  },
   status: {
     type: DataTypes.TINYINT
   },
 }, {
   sequelize: DBCONNECTION,
   underscored: true,
+  timestamps: false,
   modelName: 'ShippingCategory',
   tableName: 'shipping_category'
 });

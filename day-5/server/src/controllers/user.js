@@ -16,6 +16,7 @@ module.exports = {
         plain: true
       })
       if(user){
+        console.log(user);
         const validPassword = await auth.checkHashPassword(req.body.password,user.password);
         if(validPassword){
           user.role='user';

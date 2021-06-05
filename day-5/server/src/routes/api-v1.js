@@ -2,6 +2,7 @@ const express = require('express');
 const userCtrl = require('../controllers/user');
 const categoryCtrl = require('../controllers/category');
 const productCtrl = require('../controllers/product');
+const shippingCategory = require('../controllers/shipping-category');
 
 // v1
 const router = express();
@@ -21,7 +22,6 @@ router.route('/category/:id')
   .put(categoryCtrl.update)
   .delete(categoryCtrl.delete);
 
-
 // Product
 router.route('/product')
   .get(productCtrl.getAll)
@@ -30,6 +30,13 @@ router.route('/product/:uuid')
   .get(productCtrl.getByUuid)
   .put(productCtrl.update)
   .delete(productCtrl.delete);
+
+router.route('/shipping-category')
+  .get(shippingCategory.getAll)
+  .post(shippingCategory.create);
+router.route('/shipping-category/:id')
+  .get(shippingCategory.getById)
+  .put(shippingCategory.update);
 
 module.exports = router;
 
