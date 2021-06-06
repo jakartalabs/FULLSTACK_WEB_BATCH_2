@@ -1,6 +1,7 @@
 const Product = require('../models/product');
 const Category = require('../models/category');
 const { v4 } = require('uuid');
+const productUtil  = require('../utils/product');
 
 module.exports = {
   getAll: async (req, res, next) => {
@@ -109,6 +110,24 @@ module.exports = {
       return res.status(400).json({ message: 'Deleted product failed' });
     } catch (error) {
       next(error);
+    }
+  },
+  getPdfProduct: async(req,res)=>{
+    const { uuid } = req.params;
+    const product = await Product.findOne({
+      include: [{ model: Category }],
+      where: {
+        productUuid: uuid,
+      },
+      raw: true,
+      nest: true
+    })
+    if (product) {
+      console.log(product);
+      const pdf = await productUtil.generatePDFProduct(product);
+      res.setHeader('Content-disposition', `attachment; filename=product.pdf`);
+      res.setHeader('Content-Type', 'application/pdf');
+      return res.send(pdf);
     }
   }
 }

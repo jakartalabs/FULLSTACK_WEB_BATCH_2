@@ -32,6 +32,8 @@ router.route('/product/:uuid')
   .get(productCtrl.getByUuid)
   .put(productCtrl.update)
   .delete(productCtrl.delete);
+router.route('/product-pdf/:uuid')
+  .get(productCtrl.getPdfProduct);
 
 //Shipping Category  
 router.route('/shipping-category')

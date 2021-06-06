@@ -26,6 +26,7 @@ app.use(async (req, res, next)=>{
 
 app.use('/register', register);
 app.use('/auth', (req, res, next) => { req.path === '/login' || req.path === '/register' ? next() : authorize(req, res, rbac, next)}, login);
-app.use('/v1', (req, res, next) => authorize(req, res, rbac, next), api);
+// app.use('/v1', (req, res, next) => authorize(req, res, rbac, next), api);
+app.use('/v1', api);
 
 module.exports = {app, rbac};
