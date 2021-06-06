@@ -125,9 +125,26 @@ module.exports = {
     if (product) {
       console.log(product);
       const pdf = await productUtil.generatePDFProduct(product);
-      res.setHeader('Content-disposition', `attachment; filename=product.pdf`);
+      res.setHeader('Content-disposition', `attachment; filename=${uuid}.pdf`);
       res.setHeader('Content-Type', 'application/pdf');
       return res.send(pdf);
+    }
+  },
+  getExcelProduct: async (req, res) => {
+    const { uuid } = req.params;
+    const product = await Product.findOne({
+      include: [{ model: Category }],
+      where: {
+        productUuid: uuid,
+      },
+      raw: true,
+      nest: true
+    })
+    if (product) {
+      const xlsx = await productUtil.generateExcelProduct(product);
+      res.setHeader('Content-disposition', `attachment; filename=${uuid}.xlsx`);
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      return res.send(xlsx);
     }
   }
 }

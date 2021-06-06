@@ -5,6 +5,7 @@ const productCtrl = require('../controllers/product');
 const shippingCategoryCtrl = require('../controllers/shipping-category');
 const paymentMethodCtrl = require('../controllers/payment-method');
 const addressCtrl = require('../controllers/address');
+const transactionCtrl = require('../controllers/transaction');
 
 // v1
 const router = express();
@@ -34,6 +35,8 @@ router.route('/product/:uuid')
   .delete(productCtrl.delete);
 router.route('/product-pdf/:uuid')
   .get(productCtrl.getPdfProduct);
+router.route('/product-excel/:uuid')
+  .get(productCtrl.getExcelProduct);
 
 //Shipping Category  
 router.route('/shipping-category')
@@ -57,6 +60,11 @@ router.route('/address')
 router.route('/address/:id')
   .get(addressCtrl.getById)
   .put(addressCtrl.update);
+
+
+router.route('/transaction')
+  // .get(addressCtrl.getAll)
+  .post(transactionCtrl.create);
 
 module.exports = router;
 
