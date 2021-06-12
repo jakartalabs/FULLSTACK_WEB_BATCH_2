@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Input({ label, value, onClick, onChange, placeholder="placeholder" }) {
+function Input({ label, value, onClick, onChange, type, name, onBlur, placeholder="placeholder" }) {
   const inputStyle = "rounded-lg border border-gray-500 py-2 px-4";
   return (
     <div>
@@ -8,11 +8,13 @@ function Input({ label, value, onClick, onChange, placeholder="placeholder" }) {
       <div className="text-sm font-semibold">{label}</div>
       )}
       <input 
-        type="text" 
+        type={type}
+        name={name}
         className={inputStyle} 
         value={value} 
         onChange={onChange} 
         onClick={onClick} 
+        onBlur={onBlur}
         placeholder={placeholder}/>
     </div>
   ); 

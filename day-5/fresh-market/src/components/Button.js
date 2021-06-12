@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-function Button({ children, onClick, btnType, size = 'md', arrow }) {
+function Button({ children, type, onClick, btnType, size = 'md', width, arrow, disabled, className }) {
   let btnStyle;
+  
   switch (btnType) {
     case 'outline': {
       if (size === 'sm') {
@@ -39,20 +40,25 @@ function Button({ children, onClick, btnType, size = 'md', arrow }) {
       break;
   }
 
-  btnStyle=btnStyle+' flex flex-row p-2 rounded';
+  btnStyle = `${btnStyle} flex flex-row p-2 rounded ${className}`;
+  if (width){
+    btnStyle=btnStyle+ ` ${width}`;
+  }
+  
 
   return (
     <button
-      onClick={onClick}
+      // onClick={onClick}
       className={btnStyle}
-      type="button"
+      type={type}
+      disabled={disabled}
     >
       {arrow && arrow === 'left' && (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 self-center mr-2" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
         </svg>
       )}
-      {children || 'button'}
+      <span className="text-center"> {children || 'button'} </span>
       {arrow && arrow==='right' && (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 self-center ml-2" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />

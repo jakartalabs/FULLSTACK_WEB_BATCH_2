@@ -10,7 +10,7 @@ module.exports = {
       const user = await Users.findOne({
         attributes: ['uuid', 'name', 'email', 'password'],
         where: {
-          [Op.or]: [{ email: req.body.email||'' }, { phone: req.body.phone||''}]
+          [Op.or]: [{ email: req.body.userId || '' }, { phone: req.body.userId||''}]
         },
         raw: true,
         plain: true

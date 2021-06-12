@@ -7,12 +7,16 @@ const register = require('./routes/register');
 const api = require('./routes/api-v1');
 const logger = require('./helpers/logging');
 const {authorize} = require('./helpers/auth');
+const cors = require('cors');
 
 const app = express();
 const rbac = new RBAC({
   roles: ['admin', 'user'],
 });
 
+app.use(cors({
+  origin: '*',
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(async (req, res, next)=>{
