@@ -2,11 +2,20 @@ import React, { Component } from 'react'
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { Formik } from 'formik';
-import { login } from '../api/user';
-
-
+import { connect } from 'react-redux';
+import { loginAction, clear as alertActionClear } from '../redux/actions'
 export class Login extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleSubmit(values){
+    const { loginAction } = this.props;
+    loginAction(values);
+  }
+
   render() {
+    const { _alert } = this.props;
     return (
       <div className="w-full">
         <div className="flex justify-center my-8 flex-col flex-wrap items-center">
@@ -15,28 +24,17 @@ export class Login extends Component {
             <div className="flex flex-row justify-between mt-10 px-4">
               <h1 className="text-lg">Masuk</h1> <h1 className="text-lg">Daftar</h1>
             </div>
+            <div className="">{
+              _alert && (
+                <span>{_alert.message}</span>
+              )
+            }</div>
             <div className="flex flex-col mt-6 mx-28">
               <Formik
                 initialValues={{ userId: '', password: '' }}
-                // validate={values => {
-                //   const errors = {};
-                //   if (!values.email) {
-                //     errors.email = 'Required';
-                //   } else if (
-                //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                //   ) {
-                //     errors.email = 'Invalid email address';
-                //   }
-                //   return errors;
-                // }}
                 onSubmit={async (values, { setSubmitting }) => {
-                  const result = await login(values);
-                  console.log(result);
-                  if(result.status!==200){
-                    alert(result.message);
-                  }
+                  this.handleSubmit(values);
                   setTimeout(() => {
-                    // alert(JSON.stringify(values, null, 2));
                     setSubmitting(false);
                   }, 400);
                 }}
@@ -49,7 +47,6 @@ export class Login extends Component {
                   handleBlur,
                   handleSubmit,
                   isSubmitting,
-                  /* and other goodies */
                 }) => (
                   <form onSubmit={handleSubmit}>
                     <label className="text-sm">Nomor HP atau Email</label>
@@ -81,12 +78,6 @@ export class Login extends Component {
                   </form>
                 )}
               </Formik>
-              {/* <div className="self-center mt-4">
-                
-              </div> */}
-              {/* <div className="self-center mt-4 w-full mx-10">
-                
-              </div> */}
             </div>
           </div>
         </div>
@@ -95,4 +86,13 @@ export class Login extends Component {
   }
 }
 
-export default Login
+const mapStateToProps = state => {
+  const {alert, auth} =state;
+  return { _alert: alert, auth };
+}
+
+const actions = {
+  loginAction,
+  alertActionClear
+}
+export default connect(mapStateToProps, actions)(Login)

@@ -1,5 +1,8 @@
-import { ADD_DATA } from '../constants/type';
+// import { ADD_DATA } from '../constants/type';
 
-export function addData(payload){
-  return { type: ADD_DATA, payload };
-}
+// export function addData(payload){
+//   return { type: ADD_DATA, payload };
+// }
+
+export * from './user'
+export * from './alert'

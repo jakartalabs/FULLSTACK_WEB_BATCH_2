@@ -9,7 +9,7 @@ const instance =axios.create({
   }
 })
 
-export const login= async(data) =>{
+export const loginRequest= async(data) =>{
   return instance({
     method: 'POST',
     url: '/login',

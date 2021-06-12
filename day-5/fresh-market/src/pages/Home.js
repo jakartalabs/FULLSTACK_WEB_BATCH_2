@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { connect } from 'react-redux';
-import { addData } from '../redux/actions';
+// import { addData } from '../redux/actions';
 
 export class Home extends Component {
   constructor(props){
@@ -135,4 +135,4 @@ const mapStateToProps = state => {
   console.log('state', state);
 }
 
-export default connect(mapStateToProps, {addData})(Home)
+export default connect(mapStateToProps, null)(Home)
