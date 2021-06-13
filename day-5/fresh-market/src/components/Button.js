@@ -40,31 +40,41 @@ function Button({ children, type, onClick, btnType, size = 'md', width, arrow, d
       break;
   }
 
-  btnStyle = `${btnStyle} flex flex-row p-2 rounded ${className}`;
+
+  btnStyle = `${btnStyle} p-2 rounded`;
+  
+  if(arrow){
+    btnStyle += ` flex space-x-4`;
+  }
+
   if (width){
-    btnStyle=btnStyle+ ` ${width}`;
+    btnStyle += ` ${width}`;
   }
   
+  if(className){
+    btnStyle += ` ${className}`
+  }
 
   return (
-    <button
-      // onClick={onClick}
-      className={btnStyle}
-      type={type}
-      disabled={disabled}
-    >
-      {arrow && arrow === 'left' && (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 self-center mr-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-        </svg>
-      )}
-      <span className="text-center"> {children || 'button'} </span>
-      {arrow && arrow==='right' && (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 self-center ml-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-        </svg>
-      )}
-    </button>
+    <div className="relative">
+      <button
+        className={btnStyle}
+        type={type}
+        disabled={disabled}
+      >
+        {arrow && arrow === 'left' && (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 self-center flex-grow-0 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+          </svg>
+        )}
+        <span className="flex-grow whitespace-nowrap">{children || 'button'}</span>
+        {arrow && arrow === 'right' && (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 self-center flex-grow-0 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+          </svg>
+        )}
+      </button>
+    </div>
   )
 }
 

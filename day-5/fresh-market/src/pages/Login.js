@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { Link } from "react-router-dom";
+import Logo from '../assets/img/Freshnesecom.png';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import { loginAction, clear as alertActionClear } from '../redux/actions'
@@ -15,21 +17,44 @@ export class Login extends Component {
   }
 
   render() {
-    const { _alert } = this.props;
+    const { alert } = this.props;
     return (
       <div className="w-full">
         <div className="flex justify-center my-8 flex-col flex-wrap items-center">
-          <p>Fresh Market</p>
-          <div className="box-border h-96 w-1/3 p-4 border-2 mt-8 shadow-sm rounded-md">
+          <img src={Logo} className="self-center" style={{ width: "200px" }} />
+          <div className="box-border p-4 border-2 mt-8 shadow-sm rounded-md" style={{width: '450px', height: '500px'}}>
             <div className="flex flex-row justify-between mt-10 px-4">
-              <h1 className="text-lg">Masuk</h1> <h1 className="text-lg">Daftar</h1>
+              <h1 className="text-lg">
+                <Link
+                  to={{
+                    pathname: "/login",
+
+                  }}
+                  className="my-8 bg-green-400 text-white active:bg-green-700 uppercase text-base px-8 py-3 rounded shadow-md hover:bg-green-600 hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                >
+                  Masuk
+                </Link>
+              </h1>
+              <h1 className="text-lg">
+                <Link
+                  to={{
+                    pathname: "/register",
+                   
+                  }}
+                  className="my-8 bg-green-400 text-white active:bg-green-700 uppercase text-base px-8 py-3 rounded shadow-md hover:bg-green-600 hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                >
+                  Daftar
+                </Link>
+              </h1>
             </div>
-            <div className="">{
-              _alert && (
-                <span>{_alert.message}</span>
+            {
+              alert && alert.message && (
+                <div className="flex justify-center mt-10 mx-auto px-4">
+                  <span className="bg-red-400 p-2 rounded text-white w-full">{alert.message}</span>
+                </div>
               )
-            }</div>
-            <div className="flex flex-col mt-6 mx-28">
+            }
+            <div className="flex flex-col mt-4 mx-auto p-4">
               <Formik
                 initialValues={{ userId: '', password: '' }}
                 onSubmit={async (values, { setSubmitting }) => {
@@ -49,32 +74,38 @@ export class Login extends Component {
                   isSubmitting,
                 }) => (
                   <form onSubmit={handleSubmit}>
-                    <label className="text-sm">Nomor HP atau Email</label>
-                    <Input 
-                      type="email"
-                      name="userId"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.email} />
-                    {errors.email && touched.email && errors.email}
-                    <label className="text-sm">Password</label>
-                    <Input
-                      type="password"
-                      name="password"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.password}
-                    />
-                    {errors.password && touched.password && errors.password}
-                    <Button
-                      type="submit"
-                      width="w-full"
-                      size="lg"
-                      disabled={isSubmitting}
-                      className="mt-4"
-                    >
-                      LOGIN
-                    </Button>
+                    <div className="mb-4"> 
+                      <label className="text-sm">Nomor HP atau Email</label>
+                      <Input 
+                        type="email"
+                        name="userId"
+                        placeholder="User ID "
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email} />
+                      {errors.email && touched.email && errors.email}
+                    </div>
+                    <div className="mb-4">
+                      <label className="text-sm">Password</label>
+                      <Input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.password}
+                      />
+                      {errors.password && touched.password && errors.password}
+                      <Button
+                        type="submit"
+                        width="w-full"
+                        size="lg"
+                        disabled={isSubmitting}
+                        className="mt-4"
+                      >
+                        LOGIN
+                      </Button>
+                    </div>
                   </form>
                 )}
               </Formik>
@@ -88,7 +119,7 @@ export class Login extends Component {
 
 const mapStateToProps = state => {
   const {alert, auth} =state;
-  return { _alert: alert, auth };
+  return { alert, auth };
 }
 
 const actions = {

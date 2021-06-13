@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Input({ label, value, onClick, onChange, type, name, onBlur, placeholder="placeholder" }) {
-  const inputStyle = "rounded-lg border border-gray-500 py-2 px-4";
+function Input({ label, value, onClick, onChange, type, name, onBlur, placeholder="" }) {
+  const inputStyle = "rounded-lg border border-gray-500 py-2 px-4 w-full";
   return (
     <div>
       {label && (

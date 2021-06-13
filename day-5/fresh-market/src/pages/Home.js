@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductCard from "../components/ProductCard";
+import ProductCard, {CardLand} from "../components/ProductCard";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Input from "../components/Input";
@@ -116,6 +116,7 @@ export class Home extends Component {
             <ProductCard />
             <ProductCard /> */}
           </div>
+         
         </div>
         <div className="mt-12">
           <h1 className="text-xl">Product Promo</h1>
