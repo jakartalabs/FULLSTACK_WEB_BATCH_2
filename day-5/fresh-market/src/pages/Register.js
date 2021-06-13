@@ -2,21 +2,45 @@ import React, { Component } from 'react';
 import Input from "../components/Input";
 import Button from "../components/Button";
 import RegisterLogoImg from '../assets/img/images.jpeg';
+import * as Yup from 'yup';
 import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
 import Logo from '../assets/img/Freshnesecom.png';
 import { Formik } from 'formik';
+import { registerAction, clear as alertActionClear } from '../redux/actions'
+
+
+const RegisterSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  phone: Yup.string()
+    .min(2, 'Too Short!')
+    .max(15, 'Too Long!')
+    .required('Required'),
+  password: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+});
 export class Register extends Component {
   constructor(props){
     super(props);
   }
 
+  handleSubmit(values) {
+    const { registerAction } = this.props;
+    registerAction(values);
+  }
   render() {
+    const {alert} =this.props;
     return (
       <div className="w-full">
         <div className="flex justify-center my-8 flex-col flex-wrap items-center">
           <img src={Logo} className="self-center" style={{ width: "200px" }} />
-          <div className="flex flex-row flex-wrap box-border p-4 border-2 mt-8 shadow-sm rounded-md" style={{height: "550px"}}>
+          <div className="flex flex-row flex-wrap box-border p-4 border-2 mt-8 shadow-sm rounded-md">
             <div style={{width: "350px"}} className="my-auto">
                <img src={RegisterLogoImg} style={{width:"320px", height:"180px"}}/>
             </div>
@@ -48,13 +72,19 @@ export class Register extends Component {
               {
                 alert && alert.message && (
                   <div className="flex justify-center mt-10 mx-auto px-4">
-                    <span className="bg-red-400 p-2 rounded text-white w-full">{alert.message}</span>
+                    <span className="bg-red-400 p-2 rounded text-white w-full text-center">{alert.message}</span>
                   </div>
                 )
               }
               <div className="flex flex-col mt-4 mx-auto p-4">
                 <Formik
-                  initialValues={{ userId: '', password: '' }}
+                  initialValues={{ 
+                    email: '', 
+                    phone: '',
+                    password: '',
+                    name:''
+                  }}
+                  validationSchema={RegisterSchema}
                   onSubmit={async (values, { setSubmitting }) => {
                     this.handleSubmit(values);
                     setTimeout(() => {
@@ -73,37 +103,37 @@ export class Register extends Component {
                   }) => (
                     <form onSubmit={handleSubmit}>
                       <div className="mb-4">
-                        <label className="text-sm">Nomor HP atau Email</label>
+                        <label className="text-sm">Email</label>
                         <Input
                           type="email"
-                          name="userId"
-                          placeholder="User ID "
+                          name="email"
+                          placeholder="email"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.email} />
                         {errors.email && touched.email && errors.email}
                       </div>
                       <div className="mb-4">
-                        <label className="text-sm">Email</label>
+                        <label className="text-sm">Phone Number</label>
                         <Input
-                          type="email"
-                          name="userId"
-                          placeholder="User ID "
+                          type="text"
+                          name="phone"
+                          placeholder="Phone Number"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          value={values.email} />
-                        {errors.email && touched.email && errors.email}
+                          value={values.phone} />
+                        {errors.phone && touched.phone && errors.phone}
                       </div>
                       <div className="mb-4">
                         <label className="text-sm">Name</label>
                         <Input
-                          type="email"
-                          name="userId"
-                          placeholder="User ID "
+                          type="text"
+                          name="name"
+                          placeholder="Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          value={values.email} />
-                        {errors.email && touched.email && errors.email}
+                          value={values.name} />
+                        {errors.name && touched.name && errors.name}
                       </div>
                       <div className="mb-4">
                         <label className="text-sm">Password</label>
@@ -137,9 +167,14 @@ export class Register extends Component {
     )
   }
 }
+const mapStateToProps = state => {
+  const { alert } = state;
+  console.log(state);
+  return { alert };
+}
 
-// export default withRouter(Register);
-// const mapStateToProps = state => {
-//   console.log('state', state);
-// }
-export default connect(null, null)(Register)
+const actions = {
+  registerAction,
+  alertActionClear
+}
+export default connect(mapStateToProps, actions)(Register)

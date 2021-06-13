@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
 import Input from "../components/Input";
 import Button from "../components/Button";
+import * as Yup from 'yup';
 import { Link } from "react-router-dom";
 import Logo from '../assets/img/Freshnesecom.png';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import { loginAction, clear as alertActionClear } from '../redux/actions'
+
+const LoginSchema = Yup.object().shape({
+  userId: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  password: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+});
+
 export class Login extends Component {
   constructor(props) {
     super(props);
@@ -57,6 +70,7 @@ export class Login extends Component {
             <div className="flex flex-col mt-4 mx-auto p-4">
               <Formik
                 initialValues={{ userId: '', password: '' }}
+                validationSchema={LoginSchema}
                 onSubmit={async (values, { setSubmitting }) => {
                   this.handleSubmit(values);
                   setTimeout(() => {
@@ -77,13 +91,13 @@ export class Login extends Component {
                     <div className="mb-4"> 
                       <label className="text-sm">Nomor HP atau Email</label>
                       <Input 
-                        type="email"
+                        type="text"
                         name="userId"
                         placeholder="User ID "
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.email} />
-                      {errors.email && touched.email && errors.email}
+                        value={values.userId} />
+                      {errors.userId && touched.userId && errors.userId}
                     </div>
                     <div className="mb-4">
                       <label className="text-sm">Password</label>

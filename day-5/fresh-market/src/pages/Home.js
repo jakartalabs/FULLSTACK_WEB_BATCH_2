@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { connect } from 'react-redux';
-// import { addData } from '../redux/actions';
+import { getAllCategoryAction } from '../redux/actions';
 
 export class Home extends Component {
   constructor(props){
@@ -14,6 +14,11 @@ export class Home extends Component {
   // handleChange(){
   //   this.props.addData({title: 'Fullstack'});
   // }
+
+  componentDidMount(){
+    const { getAllCategoryAction} = this.props;
+    getAllCategoryAction();
+  }
 
   
   render() {
@@ -136,4 +141,8 @@ const mapStateToProps = state => {
   console.log('state', state);
 }
 
-export default connect(mapStateToProps, null)(Home)
+const actions = {
+  getAllCategoryAction
+}
+
+export default connect(mapStateToProps, actions)(Home)
