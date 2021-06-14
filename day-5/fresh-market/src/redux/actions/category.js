@@ -13,6 +13,8 @@ export const getAllCategoryAction = ()=>{
     }else{
       dispatch(success(result.data));
     }
+
+    
     function request() {
       return { type: 'GET_CATEGORY_REQUEST' }
     }

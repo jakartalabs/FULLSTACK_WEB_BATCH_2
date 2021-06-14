@@ -61,6 +61,7 @@ function Button({ children, type, onClick, btnType, size = 'md', width, arrow, d
         className={btnStyle}
         type={type}
         disabled={disabled}
+        onClick={onClick}
       >
         {arrow && arrow === 'left' && (
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 self-center flex-grow-0 mr-2" viewBox="0 0 20 20" fill="currentColor">

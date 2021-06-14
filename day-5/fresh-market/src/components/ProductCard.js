@@ -1,7 +1,12 @@
 import React from 'react'
 import Button from "./Button";
+import Currency from "./Currency";
+import { connect } from 'react-redux';
+import { cartActionAdd } from '../redux/actions';
 
-export function Card({data}) {
+export function Card(props) {
+  const { cartActionAdd, data } = props;
+
   // title, description, price, discountPrice, btnBuy='enable'
   return (
     <div className="w-card-width rounded-md border border-gray-300 p-4">
@@ -10,19 +15,20 @@ export function Card({data}) {
 
       </div>
       <div className="mt-4">
-        <h2 className="font-semibold text-xl">{data.title}</h2>
-        <p className="text-sm mt-2">{data.description}</p>
+        <h2 className="font-semibold text-xl">{data.name}</h2>
+        <p className="text-xs mt-1 text-gray-500 font-bold">SKU: {data.sku}</p>
+        <p className="text-sm mt-1">{data.description}</p>
       </div>
       <div className="flex flex-row justify-between mt-4">
         <div className="flex flex-col">
-          <div className="font-bold">{data.price}</div>
-          <div className="text-sm">{data.discountPrice}</div>
+          <div className="font-bold"><Currency>{data.priceBuyBy}</Currency></div>
+          <div className="text-sm">{data.discountPercentage} %</div>
         </div>
         <div className="self-center">
           <Button
             btnType="primary"
             size="lg"
-            onClick={() => alert('test')}
+            onClick={() => cartActionAdd(data)}
           >
             Buy Now
           </Button>
@@ -33,6 +39,7 @@ export function Card({data}) {
 }
 
 export function CardLand({data}){
+  // const { cartActionAdd} = props;
   return (
     <div className="rounded-md border border-gray-300 pr-4 flex flex-row" style={{width: '780px', height: '250px'}}>
       {/* img */}
@@ -78,7 +85,7 @@ export function CardLand({data}){
           <Button
             btnType="primary"
             size="lg"
-            onClick={() => alert('test')}
+            onClick={() => cartActionAdd(data)}
             arrow="right"
           >
             Product Detail
@@ -88,6 +95,14 @@ export function CardLand({data}){
     </div>
   )
 }
+const actions = {
+  cartActionAdd
+}
+
+const mapStateToProps = state => {
+  return { cart: state.cart}
+}
 
 
-export default Card
+export default connect(mapStateToProps, actions)(Card)
+

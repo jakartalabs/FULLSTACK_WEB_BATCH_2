@@ -5,67 +5,24 @@ import Footer from "../components/Footer";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { connect } from 'react-redux';
-import { getAllCategoryAction } from '../redux/actions';
+import { getAllCategoryAction, getAllProductAction } from '../redux/actions';
 
 export class Home extends Component {
   constructor(props){
     super(props);
   }
-  // handleChange(){
-  //   this.props.addData({title: 'Fullstack'});
-  // }
+ 
 
   componentDidMount(){
-    const { getAllCategoryAction} = this.props;
-    getAllCategoryAction();
+    const { getAllCategory, getAllProductAction} = this.props;
+    getAllCategory();
+    getAllProductAction();
   }
 
   
   render() {
-    const dataProduct =[{
-      title: 'Product title',
-      description: 'Space for a small product description',
-      price: 'Rp 10000',
-      discountPrice: 'Rp. 1000',
-      status: 'available'
-    }, 
-    {
-      title: 'Product title',
-      description: 'Space for a small product description',
-      price: 'Rp 10000',
-      discountPrice: 'Rp. 1000',
-      status: 'available'
-    },
-    {
-      title: 'Product title',
-      description: 'Space for a small product description',
-      price: 'Rp 10000',
-      discountPrice: 'Rp. 1000',
-      status: 'available'
-    },
-      {
-        title: 'Product title',
-        description: 'Space for a small product description',
-        price: 'Rp 10000',
-        discountPrice: 'Rp. 1000',
-        status: 'available'
-      },
-      {
-        title: 'Product title',
-        description: 'Space for a small product description',
-        price: 'Rp 10000',
-        discountPrice: 'Rp. 1000',
-        status: 'available'
-      },
-      {
-        title: 'Product title',
-        description: 'Space for a small product description',
-        price: 'Rp 10000',
-        discountPrice: 'Rp. 1000',
-        status: 'available'
-      }
-  ]
-    // this.handleChange();
+    const { dataProduct, cart } = this.props;
+    console.log(cart);
     return (
       <div className="p-10">
         <Header />
@@ -110,24 +67,17 @@ export class Home extends Component {
             </Button>
           </div>
           <div className="w-3/4 grid grid-cols-4 gap-y-8">
-            {dataProduct.length && dataProduct.map(itemProduct=>{
-              return (<ProductCard data={itemProduct} />);
+            {dataProduct && dataProduct.items && dataProduct.items.map((itemProduct, idx) => {
+              return (<div key={idx} className="m-2"><ProductCard data={itemProduct} /></div>);
             })}
-            {/* <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard /> */}
           </div>
          
         </div>
         <div className="mt-12">
           <h1 className="text-xl">Product Promo</h1>
           <div className="w-full flex flex-row mt-2">
-            {dataProduct.length && dataProduct.map(itemProduct => {
-              return (<div className="m-2"><ProductCard data={itemProduct} /></div>);
+            {dataProduct && dataProduct.items && dataProduct.items.map((itemProduct, idx) => {
+              return (<div key={idx} className="m-2"><ProductCard data={itemProduct} /></div>);
             })}
           </div>
         </div>
@@ -139,10 +89,13 @@ export class Home extends Component {
 
 const mapStateToProps = state => {
   console.log('state', state);
+  const { products, cart} = state;
+  return { dataProduct: products, cart };
 }
 
 const actions = {
-  getAllCategoryAction
+  getAllCategory: getAllCategoryAction,
+  getAllProductAction
 }
 
 export default connect(mapStateToProps, actions)(Home)

@@ -67,7 +67,7 @@ module.exports = {
         }
       })
       if(userFind){
-        return res.status(400).send('User Alredy Existing'); 
+        return res.status(400).json({message: 'User Alredy Existing'}); 
       }
       const hashPassword = await auth.hashPassword(password);
       const created= await Users._create({
