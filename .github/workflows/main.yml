@@ -16,6 +16,6 @@ jobs:
         script: |
           mkdir FSJL2
           cd FSJL2
-          git clone https://${{ secrets.PASSWORD }}@github.com/jakartalabs/FULLSTACK_WEB_BATCH_2.git
+          git clone https://${{ secrets.TOKEN }}@github.com/jakartalabs/FULLSTACK_WEB_BATCH_2.git
           ls -lha
           whoami
