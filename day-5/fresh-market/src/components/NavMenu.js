@@ -11,13 +11,14 @@ function NavMenu(props) {
           <ul className="flex flex-col lg:flex-row list-none">
             {
               menu && menu.items && menu.items.map((item, idx) => {
+                console.log(item)
                 return (
                   <li
                    key={idx}
                    className="nav-item">
                     <a
                       className={styleMenu}
-                      href="#pablo"
+                      href="/category/"
                     >
                       {item.name.toUpperCase()}
                     </a>

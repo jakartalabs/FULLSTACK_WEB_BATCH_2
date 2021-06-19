@@ -1,5 +1,8 @@
 export const cartActionAdd = (data)=>{
   return (dispatch) =>{
-    dispatch({ type: 'ADD_ITEM_CART', data})
+    dispatch(addItem())
+    function addItem(){
+      return { type: 'ADD_ITEM_CART', data}
+    }
   } 
 }

@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { cartActionAdd } from '../redux/actions';
 
 export function Card(props) {
-  const { cartActionAdd, data } = props;
+  const { cartActionAdd, data, cart } = props;
+  console.log(cart);
 
   // title, description, price, discountPrice, btnBuy='enable'
   return (
@@ -102,7 +103,6 @@ const actions = {
 const mapStateToProps = state => {
   return { cart: state.cart}
 }
-
 
 export default connect(mapStateToProps, actions)(Card)
 

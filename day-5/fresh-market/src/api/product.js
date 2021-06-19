@@ -19,11 +19,16 @@ export const apiGetCategory = async() =>{
   .catch((err)=>err.response.data);
 }
 
-export const apiGetProduct = async () => {
+export const apiGetProduct = async (id) => {
+  let url = '/product';
+  if(id){
+    url+=`/${id}/category`;
+  }
   return instanceV1({
     method: 'GET',
-    url: '/product'
+    url
   })
     .then((res) => res)
     .catch((err) => err.response.data);
 }
+

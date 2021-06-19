@@ -20,6 +20,25 @@ module.exports = {
       next(error);
     } 
   },
+  getAllByCategory: async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const products = await Product.findAll({
+        include: [{ model: Category }],
+        raw: true,
+        nest: true,
+        where: {
+          categoryId: id
+        }
+      })
+      if (products) {
+        return res.status(200).json(products);
+      }
+      return res.status(400).json({ message: 'Data empty' });
+    } catch (error) {
+      next(error);
+    }
+  },
   getByUuid: async (req, res, next) => {
     try {
       const { uuid } = req.params;

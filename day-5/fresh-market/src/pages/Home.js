@@ -22,7 +22,6 @@ export class Home extends Component {
   
   render() {
     const { dataProduct, cart } = this.props;
-    console.log(cart);
     return (
       <div className="p-10">
         <Header />

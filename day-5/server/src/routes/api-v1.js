@@ -29,6 +29,8 @@ router.route('/category/:id')
 router.route('/product')
   .get(productCtrl.getAll)
   .post(productCtrl.create);
+router.route('/product/:id/category')
+  .get(productCtrl.getAllByCategory)
 router.route('/product/:uuid')
   .get(productCtrl.getByUuid)
   .put(productCtrl.update)
