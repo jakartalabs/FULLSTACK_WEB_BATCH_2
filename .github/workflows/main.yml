@@ -26,5 +26,5 @@ jobs:
           fi
           ls -lha
           cd  day-5/fresh-market
-          npm ci
+          sudo npm ci
           whoami
