@@ -14,13 +14,15 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          if [ -d "/root/FSJL" ] 
+          if [ -d "/root/FSJL2" ] 
           then
               echo "Directory /path/to/dir exists." 
+              cd FSJL2
+              git pull https://${{ secrets.TOKEN }}@github.com/jakartalabs/FULLSTACK_WEB_BATCH_2.git .
           else
             mkdir FSJL2
+            cd FSJL2
+            git clone https://${{ secrets.TOKEN }}@github.com/jakartalabs/FULLSTACK_WEB_BATCH_2.git .
           fi
-          cd FSJL2
-          git clone https://${{ secrets.TOKEN }}@github.com/jakartalabs/FULLSTACK_WEB_BATCH_2.git .
           ls -lha
           whoami
