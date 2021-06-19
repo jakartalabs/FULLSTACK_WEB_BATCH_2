@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import CartList from './pages/CartList';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 // // import Home from './pages/TestRouter';
@@ -34,6 +35,7 @@ ReactDOM.render(
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute exact path="/cart" component={CartList} />
           {/* <Route exact path="/product" component={Product} /> */}
           {/* <Route exact path="/product-detail/:id" component={ProductDetail} /> */}
           {/* <Route exact path="/cart" component={ProductDetail} /> */}
